@@ -1,0 +1,32 @@
+#%RAML 1.0
+title: hbo-sqs-sys-api
+version: v1
+baseUri: http://hbo-sqs-sys-api/api/v1
+
+types:
+  message: !include datatypes/message.raml
+
+/queue:
+  /message:
+    get:
+      description: "Get message"
+      displayName: "Get message"
+      responses:
+        200:
+          headers:
+            content-type:
+              example: "application/json"
+          body:
+            application/json:
+              type: message
+              example: !include examples/guestMessage.json
+
+
+
+
+
+
+
+
+
+
