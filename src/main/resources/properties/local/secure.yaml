@@ -1,0 +1,7 @@
+#sqs
+sqs:
+  queue.arn: "![S0DsSbQaLVVaFQ5I11II2mNuAfyKbZnCQyI2KEmMAveH97+D091DBrYicCw/IAmjPFVRU9OXbFk=]"
+  region: "![ofbfWLpC3fwmKksVWGqj8Q==]"
+  access.key: "![Dh7g/bxtm86TJPf8iFvbHwxt618LvaMe]"
+  secret.key: "![XY4G0suTJ+vmIk22ITCUzUbf8O26ZEwRbgujIki3fOECNq92Xe0Wfo1vsB7VarYU]"
+  url: "![9dUpYs2EFYzHSwvW6yPMMkh5BJ01A5yoO9joGvu7XETUrxdNqlxxaWNobpW5gILCmuRTMUovD3OoHnedJcGacPWJiLxMyVWM]"

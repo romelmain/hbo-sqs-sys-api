@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:secure-properties="http://www.mulesoft.org/schema/mule/secure-properties" xmlns:sqs="http://www.mulesoft.org/schema/mule/sqs"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/sqs http://www.mulesoft.org/schema/mule/sqs/current/mule-sqs.xsd
+http://www.mulesoft.org/schema/mule/secure-properties http://www.mulesoft.org/schema/mule/secure-properties/current/mule-secure-properties.xsd">
+	<configuration-properties doc:name="Configuration properties" doc:id="26d567fc-3dda-46c7-92c7-8aa681a5920b" file="properties/${mule.env}/app.yaml" />
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="799a2e27-1e19-49b3-a737-be64bfa1c2a7" >
+		<http:listener-connection host="${api.host}" port="${api.port}" />
+	</http:listener-config>
+	<sqs:config name="Amazon_SQS_Configuration" doc:name="Amazon SQS Configuration" doc:id="dd283c99-7b1b-4b7c-a4d4-c2b79bc0079a" >
+		<sqs:basic-connection testQueueArn="${secure::sqs.queue.arn}" accessKey="${secure::sqs.access.key}" secretKey="${secure::sqs.secret.key}" region="${secure::sqs.region}" />
+	</sqs:config>
+	<secure-properties:config name="Secure_Properties_Config" doc:name="Secure Properties Config" doc:id="4e111770-c5cb-4eba-a0bd-c2c8dabcf904" file="properties/${mule.env}/secure.yaml" key="${prop.key}" >
+		<secure-properties:encrypt algorithm="Blowfish" />
+	</secure-properties:config>
+</mule>

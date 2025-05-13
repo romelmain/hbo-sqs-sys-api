@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:sqs="http://www.mulesoft.org/schema/mule/sqs"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/sqs http://www.mulesoft.org/schema/mule/sqs/current/mule-sqs.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<flow name="getMessageFlow" doc:id="ebe51d46-6ca4-4aec-8fe8-0c55c1f7fc92" >
+		<logger level="INFO" doc:name="Start getMessageFlow" doc:id="6341c63c-ab0e-4adf-9379-540c122913ab" message="Start getMessageFlow"/>
+		<flow-ref doc:name="readQueueFlow" doc:id="43c8f3f3-38c9-4335-9b90-a3765e20afc5" name="readQueueFlow"/>
+		<ee:transform doc:name="Set Response" doc:id="763137ec-a356-4bd0-8679-afc79421be92" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+fun setMessage(param) = read(param, "application/json")
+---
+payload map ((item, index) -> 
+	
+	{
+		id: item.id,
+		message: setMessage(item.body)
+	}
+)]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="End getMessageFlow" doc:id="ff788d4b-bad8-47a1-901b-772fba16e63c" message="End getMessageFlow"/>
+	</flow>
+	<flow name="readQueueFlow" doc:id="e753ebf1-1083-46b3-816c-c5e199d8788f" >
+		<until-successful maxRetries="${until.successful.maxretries}" doc:name="Until Successful" doc:id="8d1418a9-6a02-42d5-917c-fb31f8a37409" millisBetweenRetries="${until.successful.timebetween}">
+			<try doc:name="Try" doc:id="a5070c4b-9c53-44dc-8cdd-237970080cff" >
+				<sqs:read doc:name="Read" doc:id="738f61f1-fdab-4e33-9a0c-f6938f1fd5c8" config-ref="Amazon_SQS_Configuration" maxNumberOfMessages="5" queueUrl="${secure::sqs.url}" />
+				<error-handler >
+					<on-error-continue enableNotifications="true" logException="true" doc:name="On Error Continue" doc:id="453c77a6-f27e-4228-9502-5e3e1db4651b" >
+						<logger level="INFO" doc:name="Error" doc:id="2566d4d6-8f38-4ff2-ba48-393d7de80823" message="Error"/>
+					</on-error-continue>
+				</error-handler>
+			</try>
+		</until-successful>
+	</flow>
+</mule>

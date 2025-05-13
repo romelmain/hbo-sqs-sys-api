@@ -1,0 +1,7 @@
+#sqs
+sqs:
+  queue.arn: ""
+  region: ""
+  access.key: ""
+  secret.key: ""
+  url: ""
