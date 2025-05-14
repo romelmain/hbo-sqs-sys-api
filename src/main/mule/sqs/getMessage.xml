@@ -29,10 +29,18 @@ payload map ((item, index) ->
 		<until-successful maxRetries="${until.successful.maxretries}" doc:name="Until Successful" doc:id="8d1418a9-6a02-42d5-917c-fb31f8a37409" millisBetweenRetries="${until.successful.timebetween}">
 			<try doc:name="Try" doc:id="a5070c4b-9c53-44dc-8cdd-237970080cff" >
 				<sqs:read doc:name="Read" doc:id="738f61f1-fdab-4e33-9a0c-f6938f1fd5c8" config-ref="Amazon_SQS_Configuration" maxNumberOfMessages="5" queueUrl="${secure::sqs.url}" />
-				<error-handler >
-					<on-error-continue enableNotifications="true" logException="true" doc:name="On Error Continue" doc:id="453c77a6-f27e-4228-9502-5e3e1db4651b" >
-						<logger level="INFO" doc:name="Error" doc:id="2566d4d6-8f38-4ff2-ba48-393d7de80823" message="Error"/>
-					</on-error-continue>
+				<error-handler>
+					<on-error-propagate enableNotifications="true" logException="true" doc:name="On Error Propagate" doc:id="dcddbba2-9de4-4530-bacd-7b1dcd39b825" >
+						<ee:transform doc:name="Set Error" doc:id="0687eb65-ad6e-4e16-91bd-d537f99981d6" >
+							<ee:message >
+								<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+							</ee:message>
+						</ee:transform>
+						<logger level="ERROR" doc:name="Set Error" doc:id="52ad57c4-2c78-4624-aa16-ce6b5b4c2c96" message="#[payload]"/>
+					</on-error-propagate>
 				</error-handler>
 			</try>
 		</until-successful>
