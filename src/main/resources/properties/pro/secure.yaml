@@ -1,7 +1,7 @@
 #sqs
 sqs:
-  queue.arn: ""
-  region: ""
-  access.key: ""
-  secret.key: ""
-  url: ""
+  queue.arn: "![iTcqDZ0TeXQsYG0/bRFnwrqsZFq3pmAmq9prkDtKNS+EKhmEQOatP6rJjirUL0D+AHO9yviuFkI=]"
+  region: "![qyDaGZs8LzwiZOhKatKu9g==]"
+  access.key: "![6xnU1svZ/ygX4jx1LRnLGKKJF8LPKrkr]"
+  secret.key: "![r+8J8gDuR2kbs7xCw/jyCH5B5ux3hIgK7rAJnFtwCKVWK3Mj7dn86YWWgPP0yr/6]"
+  url: "![9m5rdWEetgBcC8izGySPo37I8WanffmnqsrP/6ATdg5Z6oHbma99d7dJ5w+YjQZYrO++1/DTkttUJJE879jBOiH6H649O3xs]"

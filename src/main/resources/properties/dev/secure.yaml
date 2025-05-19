@@ -1,7 +1,7 @@
 #sqs
 sqs:
-  queue.arn: "![S0DsSbQaLVVaFQ5I11II2mNuAfyKbZnCQyI2KEmMAveH97+D091DBrYicCw/IAmjPFVRU9OXbFk=]"
-  region: "![ofbfWLpC3fwmKksVWGqj8Q==]"
-  access.key: "![Dh7g/bxtm86TJPf8iFvbHwxt618LvaMe]"
-  secret.key: "![XY4G0suTJ+vmIk22ITCUzUbf8O26ZEwRbgujIki3fOECNq92Xe0Wfo1vsB7VarYU]"
-  url: "![9dUpYs2EFYzHSwvW6yPMMkh5BJ01A5yoO9joGvu7XETUrxdNqlxxaWNobpW5gILCmuRTMUovD3OoHnedJcGacPWJiLxMyVWM]"
+  queue.arn: "![iTcqDZ0TeXQsYG0/bRFnwrqsZFq3pmAmq9prkDtKNS+EKhmEQOatP6rJjirUL0D+AHO9yviuFkI=]"
+  region: "![qyDaGZs8LzwiZOhKatKu9g==]"
+  access.key: "![6xnU1svZ/ygX4jx1LRnLGKKJF8LPKrkr]"
+  secret.key: "![r+8J8gDuR2kbs7xCw/jyCH5B5ux3hIgK7rAJnFtwCKVWK3Mj7dn86YWWgPP0yr/6]"
+  url: "![9m5rdWEetgBcC8izGySPo37I8WanffmnqsrP/6ATdg5Z6oHbma99d7dJ5w+YjQZYrO++1/DTkttUJJE879jBOiH6H649O3xs]"
